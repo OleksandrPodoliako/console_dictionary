@@ -2,7 +2,7 @@
 This is dictionary
 '''
 import json
-from utils import print_description
+from utils import *
 
 data_dictionary = json.load(open('dictionary.json','r'))
 
@@ -13,7 +13,26 @@ while True:
         break
     elif command.upper() == 'R':
         word = raw_input('Enter word: ').lower()
-        print_description(word, data_dictionary)
+        description_lst = get_description(word, data_dictionary)
+        if len(description_lst) > 0:
+            for description in description_lst:
+                print '*** ' + description
+        else:
+            close_word = get_close_word(word, data_dictionary)
+            if len(close_word) > 0:
+                print 'Maybe you mean ' + close_word + ' ?'
+                command = raw_input("Y/N").upper()
+                if command == 'Y':
+                    description_lst = get_description(close_word, data_dictionary)
+                    if len(description_lst) > 0:
+                        for description in description_lst:
+                            print '*** ' + description
+                elif command == 'N':
+                    pass
+                else:
+                    print 'Invalid command'
+            else:
+                print 'We do not have this word in dictionary!'
     elif command.upper() == 'W':
         pass
     else:

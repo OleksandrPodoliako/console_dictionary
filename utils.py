@@ -1,6 +1,14 @@
-def print_description(word, data_dictionary):
+import difflib
+
+
+def get_description(word, data_dictionary):
+    description_lst = []
     if word in data_dictionary:
         for description in data_dictionary[word]:
-            print '*** ' + description
-    else:
-        print 'We do not have this word in dictionary!'
+            description_lst.append(description)
+    return description_lst
+
+
+def get_close_word(word, data_dictionary):
+    return difflib.get_close_matches(word, data_dictionary.keys())[0]
+
