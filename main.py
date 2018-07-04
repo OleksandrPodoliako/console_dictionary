@@ -12,10 +12,10 @@ while True:
         break
     elif command.upper() == 'R':
         word = raw_input('Enter word: ')
-        if len(data_dictionary[word]) > 0:
+        try:
             for description in data_dictionary[word]:
                 print '*** '+ description
-        else:
+        except KeyError:
             print 'We do not have this word in dictionary!'
         pass
     elif command.upper() == 'W':
