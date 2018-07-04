@@ -9,6 +9,9 @@ def get_description(word, data_dictionary):
     elif word.title() in data_dictionary:
         for description in data_dictionary[word.title()]:
             description_lst.append(description)
+    elif word.upper() in data_dictionary:
+        for description in data_dictionary[word.upper()]:
+            description_lst.append(description)
     return description_lst
 
 
