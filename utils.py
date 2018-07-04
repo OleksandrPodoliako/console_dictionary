@@ -6,6 +6,9 @@ def get_description(word, data_dictionary):
     if word in data_dictionary:
         for description in data_dictionary[word]:
             description_lst.append(description)
+    elif word.title() in data_dictionary:
+        for description in data_dictionary[word.title()]:
+            description_lst.append(description)
     return description_lst
 
 
