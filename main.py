@@ -1,8 +1,6 @@
 """
 This is dictionary
 """
-
-
 import json
 from utils import *
 

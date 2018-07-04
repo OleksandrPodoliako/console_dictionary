@@ -16,5 +16,8 @@ def get_description(word, data_dictionary):
 
 
 def get_close_word(word, data_dictionary):
-    return difflib.get_close_matches(word, data_dictionary.keys())[0]
+    close_word = ''
+    if len(difflib.get_close_matches(word, data_dictionary.keys())):
+        close_word = difflib.get_close_matches(word, data_dictionary.keys())[0]
+    return close_word
 
