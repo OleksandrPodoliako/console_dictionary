@@ -7,7 +7,7 @@ from utils import *
 data_dictionary = json.load(open('dictionary.json','r'))
 
 while True:
-    command = raw_input('Enter R to read from dictionary, W to write new word in dictionary and E to exit: ')
+    command = raw_input('Enter R to read from dictionary or E to exit: ')
     if command.upper() == 'E':
         print 'Good luck'
         break
@@ -28,7 +28,7 @@ while True:
                         for description in description_lst:
                             print '*** ' + description
                 elif command == 'N':
-                    pass
+                    continue
                 else:
                     print 'Invalid command'
             else:
