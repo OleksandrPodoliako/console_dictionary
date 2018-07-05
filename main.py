@@ -22,7 +22,7 @@ while True:
             close_word = get_close_word(word, data_dictionary)
             if len(close_word) > 0:
                 print 'Maybe you mean ' + close_word + ' ?'
-                command = raw_input("Y/N").upper()
+                command = raw_input("Y/N ").upper()
                 if command == 'Y':
                     description_lst = get_description(close_word, data_dictionary)
                     if len(description_lst) > 0:
@@ -33,7 +33,16 @@ while True:
                 else:
                     print 'Invalid command'
             else:
-                print 'We do not have this word in dictionary!'
+                command = raw_input('We do not have this word in dictionary! Add to dictionary? Y/N ').upper()
+                if command == 'Y':
+                    description = raw_input('Enter description: ')
+                    data_dictionary[word] = [description]
+                    add_data_in_json(data_dictionary, dictionary_file_name)
+                    print 'Data was appended successfully'
+                elif command == 'N':
+                    continue
+                else:
+                    print 'Invalid command'
     elif command.upper() == 'W':
         word = raw_input("Enter word: ").lower()
         description = raw_input("Enter description: ")
