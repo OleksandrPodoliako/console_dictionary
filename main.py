@@ -35,16 +35,19 @@ while True:
                         print 'Invalid command'
                         continue
             else:
-                command = raw_input('We do not have this word in dictionary! Add to dictionary? Y/N ').upper()
-                if command == 'Y':
-                    description = raw_input('Enter description: ')
-                    data_dictionary[word] = [description]
-                    add_data_in_json(data_dictionary, dictionary_file_name)
-                    print 'Data was appended successfully'
-                elif command == 'N':
-                    continue
-                else:
-                    print 'Invalid command'
+                while True:
+                    command = raw_input('We do not have this word in dictionary! Add to dictionary? Y/N ').upper()
+                    if command == 'Y':
+                        description = raw_input('Enter description: ')
+                        data_dictionary[word] = [description]
+                        add_data_in_json(data_dictionary, dictionary_file_name)
+                        print 'Data was appended successfully'
+                        break
+                    elif command == 'N':
+                        break
+                    else:
+                        print 'Invalid command'
+                        continue
     elif command.upper() == 'W':
         word = raw_input("Enter word: ").lower()
         description = raw_input("Enter description: ")
