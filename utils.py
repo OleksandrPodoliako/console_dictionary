@@ -22,6 +22,6 @@ def get_close_word(word, data_dictionary):
         close_word = difflib.get_close_matches(word, data_dictionary.keys())[0]
     return close_word
 
-def add_data_in_json(data, file_name):
+def change_json(data, file_name):
     with open(file_name,'w') as json_file:
         json.dump(data, json_file)
