@@ -3,11 +3,12 @@ This is dictionary
 """
 import json
 from utils import *
-
-data_dictionary = json.load(open('dictionary.json','r'))
+dictionary_file_name = 'dictionary.json'
 
 while True:
-    command = raw_input('Enter R to read from dictionary or E to exit: ')
+    with open(dictionary_file_name,'r') as dictionary_file:
+        data_dictionary = json.load(dictionary_file)
+    command = raw_input('Enter R to read from dictionary, W to write new word or E to exit: ')
     if command.upper() == 'E':
         print 'Good luck'
         break
@@ -34,6 +35,10 @@ while True:
             else:
                 print 'We do not have this word in dictionary!'
     elif command.upper() == 'W':
-        pass
+        word = raw_input("Enter word: ").lower()
+        description = raw_input("Enter description: ")
+        data_dictionary[word] = [description]
+        add_data_in_json(data_dictionary, dictionary_file_name)
+        print 'Data was appended successfully'
     else:
         print 'Invalid command'
