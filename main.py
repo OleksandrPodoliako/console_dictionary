@@ -21,17 +21,19 @@ while True:
         else:
             close_word = get_close_word(word, data_dictionary)
             if len(close_word) > 0:
-                print 'Maybe you mean ' + close_word + ' ?'
-                command = raw_input("Y/N ").upper()
-                if command == 'Y':
-                    description_lst = get_description(close_word, data_dictionary)
-                    if len(description_lst) > 0:
-                        for description in description_lst:
-                            print '*** ' + description
-                elif command == 'N':
-                    continue
-                else:
-                    print 'Invalid command'
+                while True:
+                    command = raw_input('Maybe you mean %s ? Y/N ' %(close_word)).upper()
+                    if command == 'Y':
+                        description_lst = get_description(close_word, data_dictionary)
+                        if len(description_lst) > 0:
+                            for description in description_lst:
+                                print '*** ' + description
+                        break
+                    elif command == 'N':
+                        break
+                    else:
+                        print 'Invalid command'
+                        continue
             else:
                 command = raw_input('We do not have this word in dictionary! Add to dictionary? Y/N ').upper()
                 if command == 'Y':
